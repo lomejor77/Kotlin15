@@ -1,4 +1,4 @@
-package com.example.kotlinexamples
+package cl.awakelabs.kotlin15
 
 class Pokedex {
     companion object {

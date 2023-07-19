@@ -16,7 +16,7 @@ class Adapter: RecyclerView.Adapter <Adapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        var binding =  ItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding =  ItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return ViewHolder(binding)
     }
 
@@ -25,10 +25,19 @@ class Adapter: RecyclerView.Adapter <Adapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val item = listPokemon[position]
+        holder.bind(item)
     }
 
-    class ViewHolder(binding: ItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    fun setData(pokedex: List<Pokemon>) {
+        this.listPokemon = pokedex.toMutableList()
+    }
+
+    class ViewHolder(val binding: ItemBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun bind(pokemon: Pokemon) {
+            binding.textName.text = pokemon.name
+            binding.textLabel.text = pokemon.type
+        }
 
     }
 }
